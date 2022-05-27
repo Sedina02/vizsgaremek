@@ -12,12 +12,12 @@
 
 * Frontend Angular/React alapú - legalább 5 külön oldal legyen, model-service-component architektúra, Bootstrap/Material vagy egyéb sablon használata engedélyezett, reszponzív legyen. A felület bizonyos oldalai csak belépés után legyenek elérhetőek (JWT-autentikáció).
 
-* Clean kód elveit kövesse az alkalmazás összes eleme.
+- Clean kód elveit kövesse az alkalmazás összes eleme.
 
-* Minden API útvonalhoz legalább egy tesztet kell írni. Legalább 1-1 Unit/Integrációs teszt.
+- Minden API útvonalhoz legalább egy tesztet kell írni. Legalább 1-1 Unit/Integrációs teszt.
 
-* Swagger alapú dokumentáció az API-hoz.
+- Swagger alapú dokumentáció az API-hoz.
 
-* Markdown dokumentáció a repository-ban, tartalmazza az alkalmazás telepítését, konfigurálását, célját.
+- Markdown dokumentáció a repository-ban, tartalmazza az alkalmazás telepítését, konfigurálását, célját.
 
-* Dockerizálva legyen a kész alkalmazás, konténerből legyen futtatható.
+- Dockerizálva legyen a kész alkalmazás, konténerből legyen futtatható.
