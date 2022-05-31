@@ -7,13 +7,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { HomeComponent } from './page/home/home.component';
+import { MainCourseComponent } from './page/main-course/main-course.component';
+import { AppetizerComponent } from './page/appetizer/appetizer.component';
+import { SoupComponent } from './page/soup/soup.component';
+import { DessertComponent } from './page/dessert/dessert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    MainCourseComponent,
+    AppetizerComponent,
+    SoupComponent,
+    DessertComponent
   ],
   imports: [
     BrowserModule,
