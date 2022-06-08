@@ -4,7 +4,7 @@ const controller = require('../base/controller')(Recipe);
 const router = express.Router();
 
 //GET
-router.get('/', (req, res, next) => {
+router.get('/soup', (req, res, next) => {
     return controller.findAll(req, res, next);
 });
 

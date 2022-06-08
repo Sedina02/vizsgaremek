@@ -11,6 +11,7 @@ import { MainCourseComponent } from './page/main-course/main-course.component';
 import { AppetizerComponent } from './page/appetizer/appetizer.component';
 import { SoupComponent } from './page/soup/soup.component';
 import { DessertComponent } from './page/dessert/dessert.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DessertComponent } from './page/dessert/dessert.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
