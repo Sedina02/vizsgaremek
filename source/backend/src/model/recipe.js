@@ -1,6 +1,16 @@
 const mongoose = require('mongoose');
 
 const RecipeSchema = mongoose.Schema({
+    type: {
+        type: Map,
+        of: new Schema({
+          type: {
+            type: ObjectId,
+            ref: 'RecipeType'
+          },
+          amount: Number,
+        }),
+    },
     name: {
         type: String,
         required: true,
@@ -14,8 +24,14 @@ const RecipeSchema = mongoose.Schema({
         required: true,
     },
     ingredients: {
-        type: String,
-        required: true,
+        type: Map,
+        of: new Schema({
+          ingredient: {
+            type: ObjectId,
+            ref: 'Ingredient'
+          },
+          amount: Number,
+        }),
     }
 });
 
