@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "bcrypt": "^5.0.1"
   }
 }

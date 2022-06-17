@@ -1,7 +1,18 @@
-button {
-  margin-right: 0em;
+.all{
+  background-color: rgb(52, 58, 64);
 }
 
-.grid-container {
-  display: inline-grid;
+.container {
+  text-align: center;
+  color: whitesmoke;
 }
+
+.fa-youtube {
+  font-size: 30px;
+  color: red;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
