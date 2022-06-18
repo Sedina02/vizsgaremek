@@ -1,15 +1,10 @@
 const mongoose = require('mongoose');
 
 const RecipeSchema = mongoose.Schema({
-    type: {
-        type: Map,
-        of: new Schema({
-          type: {
-            type: ObjectId,
-            ref: 'RecipeType'
-          },
+    typeId: {
+        type: mongoose.Schema.Types.ObjectId,
+          ref: 'RecipeType',
           amount: Number,
-        }),
     },
     name: {
         type: String,
@@ -23,16 +18,11 @@ const RecipeSchema = mongoose.Schema({
         type: Number,
         required: true,
     },
-    ingredients: {
-        type: Map,
-        of: new Schema({
-          ingredient: {
-            type: ObjectId,
-            ref: 'Ingredient'
-          },
-          amount: Number,
-        }),
-    }
+    ingredients: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Ingredient',
+        amount: Number,
+    }]
 });
 
 module.exports = mongoose.model('Recipe', RecipeSchema);

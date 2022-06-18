@@ -4,16 +4,21 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const cors = require('cors');
+mongoose.Promise = global.Promise;
 
 const app = express();
 
 const { host, user, pass } = config.get('database');
 mongoose.connect(`mongodb+srv://${host}`, {
+    user,
     pass,
-}).then( conn => console.log('Connection is success!'))
-.catch( err => {
-    throw new Error(err.message);
-});
+}).then(
+    conn => {
+        console.log('Database is seeded!');
+    },
+).catch(
+    err => console.error(err),
+);
 
 // Cross origin resource sharing: CORS 
 app.use(cors);

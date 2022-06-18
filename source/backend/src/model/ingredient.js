@@ -5,14 +5,9 @@ const IngredientSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    allergen: {
-        type: Map,
-        of: new Schema({
-          ingredient: {
-            type: ObjectId,
-            ref: 'Allergen'
-          },
-        }),
+    allergenId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Allergen'
     },
 });
 
