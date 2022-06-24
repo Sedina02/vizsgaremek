@@ -1,0 +1,77 @@
+<!-- <div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title" *ngIf="appetizer$ | async">Előétel szerkesztése</h4>
+        <h4 class="card-title" *ngIf="!(appetizer$ | async)">Új előétel hozzáadása</h4>
+
+      </div>
+      <div class="card-body">
+        <form #appetizerForm="ngForm">
+          <input type="hidden" name="id" [(ngModel)]="appetizer.id">
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="bmd-label-floating h5 text-secondary">Étel neve: *</label>
+                <input type="text" class="form-control" name="name" [(ngModel)]="appetizer.name" required
+                  pattern="^[a-űA-Ű]{5,20}$">
+              </div>
+              <div [hidden]="appetizerForm.controls['name']?.valid" class="alert alert-danger" role="alert">
+                Az étel nevének legalább 5 karakter hozzúságúnak kell lennie!
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="bmd-label-floating h5 text-secondary">Hozzávalók *</label>
+                <input type="text" class="form-control" name="ingredient" [(ngModel)]="appetizer.ingredient" required
+                  pattern="^[a-űA-Ű ]{5,30}$">
+              </div>
+              <div [hidden]="appetizerForm.controls['ingredient']?.valid" class="alert alert-danger" role="alert">
+                The description must be at least 5 letters!
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="bmd-label-floating h5 text-secondary">Elkészítés *</label>
+                <input type="text" class="form-control" name="description" [(ngModel)]="appetizer.description" required
+                  pattern="^[a-űA-Ű ]{5,30}$">
+              </div>
+              <div [hidden]="appetizerForm.controls['description']?.valid" class="alert alert-danger" role="alert">
+                Az étel elkészítésének leírásának legalább 5 karakter hozzúságúnak kell lennie!
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="bmd-label-floating h5 text-secondary">Elkészítési idő *</label>
+                <input type="text" class="form-control" name="time" [(ngModel)]="appetizer.description" required
+                  pattern="^[a-űA-Ű ]{5,30}$">
+              </div>
+              <div [hidden]="appetizerForm.controls['time']?.valid" class="alert alert-danger" role="alert">
+                Az elkészítési időnek tartalmaznia kell az időt és a hozzá tartozó időmértékegységet is!
+              </div>
+            </div>
+          </div>
+
+          <button *ngIf="appetizer.id!==0" (click)="onUpdate(appetizer)" [disabled]="appetizerForm.invalid" type="submit"
+            class="btn btn-primary pull-right">Előétel szerkesztésének mentése</button>
+          <button *ngIf="appetizer.id===0" (click)="onCreate(appetizer)" [disabled]="appetizerForm.invalid" type="submit"
+            class="btn btn-primary pull-right">Előétel mentése</button>
+          <div class="clearfix"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+
+  </div>
+</div> -->

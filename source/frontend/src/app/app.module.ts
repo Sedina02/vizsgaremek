@@ -12,6 +12,10 @@ import { AppetizerComponent } from './page/appetizer/appetizer.component';
 import { SoupComponent } from './page/soup/soup.component';
 import { DessertComponent } from './page/dessert/dessert.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AddEditAppetizerComponent } from './page/add-edit-appetizer/add-edit-appetizer.component';
+import { AddEditDessertComponent } from './page/add-edit-dessert/add-edit-dessert.component';
+import { AddEditMainCourseComponent } from './page/add-edit-main-course/add-edit-main-course.component';
+import { AddEditSoupComponent } from './page/add-edit-soup/add-edit-soup.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MainCourseComponent,
     AppetizerComponent,
     SoupComponent,
-    DessertComponent
+    DessertComponent,
+    AddEditAppetizerComponent,
+    AddEditDessertComponent,
+    AddEditMainCourseComponent,
+    AddEditSoupComponent
   ],
   imports: [
     BrowserModule,

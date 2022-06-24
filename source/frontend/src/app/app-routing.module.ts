@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddEditAppetizerComponent } from './page/add-edit-appetizer/add-edit-appetizer.component';
+import { AddEditDessertComponent } from './page/add-edit-dessert/add-edit-dessert.component';
+import { AddEditMainCourseComponent } from './page/add-edit-main-course/add-edit-main-course.component';
+import { AddEditSoupComponent } from './page/add-edit-soup/add-edit-soup.component';
 import { AppetizerComponent } from './page/appetizer/appetizer.component';
 import { DessertComponent } from './page/dessert/dessert.component';
 import { HomeComponent } from './page/home/home.component';
@@ -26,6 +30,38 @@ const routes: Routes = [
   {
     path: 'dessert',
     component: DessertComponent
+  },
+  {
+    path: 'edit/appetizer/:id',
+    component: AddEditAppetizerComponent,
+  },
+  {
+    path: 'new/appetizer',
+    component: AddEditAppetizerComponent,
+  },
+  {
+    path: 'edit/dessert/:id',
+    component: AddEditAppetizerComponent,
+  },
+  {
+    path: 'new/dessert',
+    component: AddEditDessertComponent,
+  },
+  {
+    path: 'edit/main-course/:id',
+    component: AddEditMainCourseComponent,
+  },
+  {
+    path: 'new/main-course',
+    component: AddEditMainCourseComponent,
+  },
+  {
+    path: 'edit/soup/:id',
+    component: AddEditSoupComponent,
+  },
+  {
+    path: 'new/soup',
+    component: AddEditSoupComponent,
   }
 ];
 
