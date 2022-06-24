@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title" *ngIf="ingredient$ | async">Hozzávaló szerkesztése</h4>
+        <h4 class="card-title" *ngIf="!(ingredient$ | async)">Új hozzávaló hozzáadása</h4>
+
+      </div>
+      <div class="card-body">
+        <form #ingredientForm="ngForm">
+          <input type="hidden" name="id" [(ngModel)]="ingredient.id">
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="bmd-label-floating h5 text-secondary">Hozzávaló neve: *</label>
+                <input type="text" class="form-control" name="name" [(ngModel)]="ingredient.name" required
+                  pattern="^[a-űA-Ű]{5,20}$">
+              </div>
+              <div [hidden]="ingredientForm.controls['name']?.valid" class="alert alert-danger" role="alert">
+                A hozzávalónak nevének legalább 5 karakter hozzúságúnak kell lennie!
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="bmd-label-floating h5 text-secondary">Allergen *</label>
+                <input type="text" class="form-control" name="time" [(ngModel)]="ingredient.allergenId" required
+                  pattern="^[a-űA-Ű ]{5,30}$">
+              </div>
+              <div [hidden]="ingredientForm.controls['time']?.valid" class="alert alert-danger" role="alert">
+                Az elkészítési időnek tartalmaznia kell az időt és a hozzá tartozó időmértékegységet is!
+              </div>
+            </div>
+          </div>
+
+          <button *ngIf="ingredient.id!==0" (click)="onUpdate(ingredient)" [disabled]="ingredientForm.invalid" type="submit"
+            class="btn btn-primary pull-right">Hozzávaló szerkesztésének mentése</button>
+          <button *ngIf="ingredient.id===0" (click)="onCreate(ingredient)" [disabled]="ingredientForm.invalid" type="submit"
+            class="btn btn-primary pull-right">Hozzávaló mentése</button>
+          <div class="clearfix"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,5 @@
 {
     "database": {
-        "user": "sedina",
-        "pass": "T360Vizsga",
-        "host": "vizsgaremek.hzk3j.mongodb.net/?retryWrites=true&w=majority"
+        "host": "mongodb+srv://sedina:HKNfxmQumgXhZQ@vizsgaremek.hzk3j.mongodb.net/?retryWrites=true&w=majority"
     }
 }

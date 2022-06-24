@@ -1,24 +1,23 @@
 const express = require('express');
 const config =  require('config');
 const logger = require('./config/logger');
+const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const mongoose = require('mongoose');
+const swaggerUI = require('swagger-ui-express');
 const cors = require('cors');
+const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-
-const app = express();
+//HKNfxmQumgXhZQ
 
 const { host } = config.get('database');
 mongoose
-    .connect(`mongodb://${host}`, {
+    .connect(host, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
     .then(() => {
-        // Data seeds.
-        require('./seed/seeder');
-        logger.info('MongoDB connection has been established successfully.');
+        logger.info('MongoDb is connected!')
     })
     .catch(err => {
         logger.error(err);
@@ -34,9 +33,9 @@ app.use(bodyParser.json());
 
 //Recipes
 app.use('/appetizer', require('./controller/recipe/router'));
-app.use('soup', require('./controller/recipe/router'));
-app.use('main-course', require('./controller/recipe/router'));
-app.use('dessert', require('./controller/recipe/router'));
+app.use('/soup', require('./controller/recipe/router'));
+app.use('/main-course', require('./controller/recipe/router'));
+app.use('/dessert', require('./controller/recipe/router'));
 
 app.use((err, req, res, next) => {
     res.status = 500;

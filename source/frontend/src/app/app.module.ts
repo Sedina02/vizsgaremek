@@ -16,6 +16,7 @@ import { AddEditAppetizerComponent } from './page/add-edit-appetizer/add-edit-ap
 import { AddEditDessertComponent } from './page/add-edit-dessert/add-edit-dessert.component';
 import { AddEditMainCourseComponent } from './page/add-edit-main-course/add-edit-main-course.component';
 import { AddEditSoupComponent } from './page/add-edit-soup/add-edit-soup.component';
+import { AddEditIngredientComponent } from './page/add-edit-ingredient/add-edit-ingredient.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AddEditSoupComponent } from './page/add-edit-soup/add-edit-soup.compone
     AddEditAppetizerComponent,
     AddEditDessertComponent,
     AddEditMainCourseComponent,
-    AddEditSoupComponent
+    AddEditSoupComponent,
+    AddEditIngredientComponent
   ],
   imports: [
     BrowserModule,
