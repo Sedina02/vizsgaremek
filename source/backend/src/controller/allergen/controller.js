@@ -34,7 +34,7 @@ exports.findOne = (req, res, next) => {
             if (!allergen) {
                 return next(new createError.NotFound("Az allergén nem található!"));
             }
-            return res.json(allergens);
+            return res.json(allergen);
         });
 };
 

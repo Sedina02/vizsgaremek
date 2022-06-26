@@ -32,9 +32,10 @@ app.use(bodyParser.json());
 
 //Recipes
 app.use('/appetizer', require('./controller/recipe/router'));
-app.use('/soup', require('./controller/recipe/router'));
-app.use('/main-course', require('./controller/recipe/router'));
-app.use('/dessert', require('./controller/recipe/router'));
+app.use('/ingredient', require('./controller/ingredient/router'));
+// app.use('/soup', require('./controller/recipe/router'));
+// app.use('/main-course', require('./controller/recipe/router'));
+// app.use('/dessert', require('./controller/recipe/router'));
 
 app.use((err, req, res, next) => {
     res.status = 500;
