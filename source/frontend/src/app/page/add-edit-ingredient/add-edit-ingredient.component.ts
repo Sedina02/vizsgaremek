@@ -1,54 +1,50 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
-import { Ingredient } from 'src\app\model\ingredient.ts';
-import { CustomerService } from 'src/app/service/customer.service';
-import { ToastrService } from 'ngx-toastr';
+import { Ingredient } from 'src/app/model/ingredient';
+import { IngredientService } from 'src/app/service/ingredient.service';
+// import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-edit-customer',
-  templateUrl: './edit-customer.component.html',
-  styleUrls: ['./edit-customer.component.scss'],
+  selector: 'app-add-edit-ingredient',
+  templateUrl: './add-edit-ingredient.component.html',
+  styleUrls: ['./add-edit-ingredient.component.scss'],
 })
-export class EditCustomerComponent implements OnInit {
-  customer: Customer = new Customer();
+export class AddEditIngredientComponent implements OnInit {
+
+  ingredient$!: Observable<Ingredient>;
+  ingredient: Ingredient = new Ingredient();
   edit: boolean = true;
-  endString = 'customers';
+  endString = 'ingredient';
 
   constructor(
     private router: Router,
     private ar: ActivatedRoute,
-    private objectService: CustomerService,
-    private toastr: ToastrService
-  ) {
-    this.ar.params
-      .pipe(switchMap((params) => this.objectService.getOne(params['id'])))
-      .subscribe((currentObject) => {
-        if (
-          currentObject === null ||
-          currentObject === undefined ||
-          currentObject.id < 1
-        ) {
-          this.edit = false;
-          this.customer = new Customer();
-        } else {
-          this.customer = currentObject;
-        }
-      });
+    private ingredientService: IngredientService,
+    // private toastr: ToastrService
+  ) {}
+
+  ngOnInit(): void {
+    this.ar.params.subscribe({
+      next: (param) =>
+        (this.ingredient$ = this.ingredientService.getOne(param['id'])),
+    });
+    this.ingredient$.subscribe({
+      next: (ingredient) => (this.ingredient = ingredient ? ingredient : this.ingredient),
+    });
   }
 
-  ngOnInit(): void {}
+  update(ingredient: Ingredient) {
+    this.ingredientService.update(ingredient).subscribe(
+      (ingredient) => this.router.navigate(['/', 'ingredients']),
+      err => console.error(err),
+    );
+  }
 
-  onSend(customer: Customer) {
-    const crudObservable: Observable<any> = this.edit
-      ? this.objectService.update(customer)
-      : this.objectService.create(customer);
-    crudObservable.subscribe((result) => {
-      this.toastr.success('Saving successful', '', {
-        timeOut: 1800,
-        positionClass: 'toast-top-right',
-      });
-      this.router.navigate([this.endString]);
-    });
+  create(ingredient: Ingredient): void {
+    this.ingredientService.create(ingredient).subscribe(
+      (ingredient) => this.router.navigate(['/', 'ingredients']),
+      err => console.error(err)
+    );
   }
 }

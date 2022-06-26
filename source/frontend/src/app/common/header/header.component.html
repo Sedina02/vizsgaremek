@@ -6,28 +6,17 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/">Főoldal <span class="sr-only">(current)</span></a>
-      </li>
+    <div class="navbar-nav mr-auto">
+        <a class="nav-link" routerLink="/">Főoldal <span class="sr-only">(current)</span></a>
       <fa-icon [icon]="faHouseChimney"></fa-icon>
-      <li class="nav-item">
-        <a class="nav-link" href="/appetizer">Előételek</a>
-      </li>
+        <a class="nav-link" routerLink="/appetizer">Előételek</a>
       <fa-icon [icon]="faBreadSlice"></fa-icon>
-      <li class="nav-item">
-        <a class="nav-link" href="/soup">Levesek</a>
-      </li>
+        <a class="nav-link" routerLink="/soup">Levesek</a>
       <fa-icon [icon]="faBowlFood"></fa-icon>
-      <li class="nav-item">
-        <a class="nav-link" href="/main-course">Főételek</a>
-      </li>
+        <a class="nav-link" routerLink="/main-course">Főételek</a>
       <fa-icon [icon]="faUtensils"></fa-icon>
-      <li class="nav-item">
-        <a class="nav-link" href="/dessert">Desszertek, Sütemények</a>
-      </li>
+        <a class="nav-link" routerLink="/dessert">Desszertek, Sütemények</a>
       <fa-icon [icon]="faCake"></fa-icon>
-    </ul>
-
+    </div>
   </div>
 </nav>

@@ -8,8 +8,7 @@
       </div>
       <div class="card-body">
         <form #ingredientForm="ngForm">
-          <input type="hidden" name="id" [(ngModel)]="ingredient.id">
-
+          <input type="hidden" name="id" [(ngModel)]="ingredient._id">
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
@@ -36,9 +35,9 @@
             </div>
           </div>
 
-          <button *ngIf="ingredient.id!==0" (click)="onUpdate(ingredient)" [disabled]="ingredientForm.invalid" type="submit"
+          <button (click)="update(ingredient)" [disabled]="ingredientForm.invalid" type="submit"
             class="btn btn-primary pull-right">Hozzávaló szerkesztésének mentése</button>
-          <button *ngIf="ingredient.id===0" (click)="onCreate(ingredient)" [disabled]="ingredientForm.invalid" type="submit"
+          <button (click)="create(ingredient)" [disabled]="ingredientForm.invalid" type="submit"
             class="btn btn-primary pull-right">Hozzávaló mentése</button>
           <div class="clearfix"></div>
         </form>

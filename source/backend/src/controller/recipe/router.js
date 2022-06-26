@@ -1,5 +1,6 @@
 const express = require("express");
 const controller = require('./controller');
+const logger = require('../../config/logger');
 
 const router = express.Router();
 
@@ -10,6 +11,7 @@ router.post('/', (req, res, next) => {
 
 // read
 router.get('/', (req, res, next) => {
+  logger.info('asd');
   return controller.findAll(req, res, next);
 });
 

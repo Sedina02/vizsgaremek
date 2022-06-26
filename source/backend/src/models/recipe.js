@@ -5,6 +5,7 @@ const RecipeSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
           ref: 'RecipeType',
           amount: Number,
+          required: true,
     },
     name: {
         type: String,

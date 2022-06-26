@@ -1,4 +1,4 @@
-<!-- <div class="row">
+<div class="row">
   <div class="col-md-8">
     <div class="card">
       <div class="card-header card-header-primary">
@@ -8,7 +8,7 @@
       </div>
       <div class="card-body">
         <form #soupForm="ngForm">
-          <input type="hidden" name="id" [(ngModel)]="soup.id">
+          <input type="hidden" name="id" [(ngModel)]="soup._id">
 
           <div class="row">
             <div class="col-md-12">
@@ -27,7 +27,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label class="bmd-label-floating h5 text-secondary">Hozzávalók *</label>
-                <input type="text" class="form-control" name="ingredient" [(ngModel)]="soup.ingredient" required
+                <input type="text" class="form-control" name="ingredient" [(ngModel)]="soup.ingredients" required
                   pattern="^[a-űA-Ű ]{5,30}$">
               </div>
               <div [hidden]="soupForm.controls['ingredient']?.valid" class="alert alert-danger" role="alert">
@@ -62,9 +62,9 @@
             </div>
           </div>
 
-          <button *ngIf="soup.id!==0" (click)="onUpdate(soup)" [disabled]="soupForm.invalid" type="submit"
+          <button (click)="update(soup)" [disabled]="soupForm.invalid" type="submit"
             class="btn btn-primary pull-right">Leves szerkesztésének mentése</button>
-          <button *ngIf="soup.id===0" (click)="onCreate(soup)" [disabled]="soupForm.invalid" type="submit"
+          <button (click)="create(soup)" [disabled]="soupForm.invalid" type="submit"
             class="btn btn-primary pull-right">Leves mentése</button>
           <div class="clearfix"></div>
         </form>
@@ -74,4 +74,4 @@
   <div class="col-md-4">
 
   </div>
-</div> -->
+</div>

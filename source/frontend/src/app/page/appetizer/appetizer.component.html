@@ -1,3 +1,45 @@
-<button type="button" class="btn btn-primary col-10" [routerLink]="['/edit/appetizer', 0]">
-  Új előétel hozzáadása
-</button>
+<div class="d-flex justify-content-center py-4">
+  <button type="button" class="btn btn-primary col-10" [routerLink]="['/edit/appetizer', 0]">
+    Új előétel hozzáadása
+  </button>
+</div>
+<div class="container p-3">
+  <h1 class="pb-4">Előételek</h1>
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Étel neve</th>
+                <th>Hozzávalók</th>
+                <th>Elkészítés</th>
+                <th>Elkészítési idő</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let appetizer of appetizer$ | async">
+                <td>{{ appetizer.name }}</td>
+                <td>{{ appetizer.ingredients }}</td>
+                <td>{{ appetizer.description }}</td>
+                <td>{{ appetizer.time }}</td>
+                <td>
+                  <div class="btn-group">
+                    <button [routerLink]="['/', 'appetizer', 'edit', appetizer._id]" class="btn btn-info">
+                      <i class="fas fa-pencil-alt"></i>
+                    </button>
+                    <button (click)="delete(appetizer)" class="btn btn-danger">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -22,7 +22,10 @@ exports.create = (req, res, next) => {
 };
 
 exports.findAll = (req, res, next) => {
+    console.log("ffff");
     return recipeService.findAll()
+    .populate('typeId')
+    .populate('ingredients')
         .then( recipes => {
             res.json(recipes);
         });
@@ -30,6 +33,8 @@ exports.findAll = (req, res, next) => {
 
 exports.findOne = (req, res, next) => {
     return recipeService.findOne(req.params.id)
+    .populate('typeId')
+    .populate('ingredients')
         .then( recipe => {
             if (!recipe) {
                 return next(new createError.NotFound("A recept nem található!"));

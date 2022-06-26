@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Dessert } from 'src/app/model/dessert';
+import { DessertService } from 'src/app/service/dessert.service';
 
 @Component({
   selector: 'app-dessert',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DessertComponent implements OnInit {
 
-  constructor() { }
+  dessert$: Observable<Dessert[]> = this.dessertService.getAll();
+
+  constructor(
+    private dessertService: DessertService
+  ) { }
 
   ngOnInit(): void {
   }
 
+  delete(dessert: Dessert) {
+    this.dessertService.delete(dessert).subscribe(()=> {
+      this.dessert$ = this.dessertService.getAll();
+    })
+  }
 }

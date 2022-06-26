@@ -7,7 +7,7 @@ exports.create = ingredientData => {
 
 exports.findAll = () => Ingredient.find().populate();
 
-exports.findOne = id => Ingredient.findById(id).populate();
+exports.findOne = id => Ingredient.findById(id).populate('allergenId');
 
 exports.update = (id, updateData) => Ingredient.findByIdAndUpdate(id, updateData, {new: true});
 

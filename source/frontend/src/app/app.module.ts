@@ -17,6 +17,9 @@ import { AddEditDessertComponent } from './page/add-edit-dessert/add-edit-desser
 import { AddEditMainCourseComponent } from './page/add-edit-main-course/add-edit-main-course.component';
 import { AddEditSoupComponent } from './page/add-edit-soup/add-edit-soup.component';
 import { AddEditIngredientComponent } from './page/add-edit-ingredient/add-edit-ingredient.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { AddEditIngredientComponent } from './page/add-edit-ingredient/add-edit-
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
+    CommonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

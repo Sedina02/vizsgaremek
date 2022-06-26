@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { MainCourse } from 'src/app/model/main-course';
+import { MainCourseService } from 'src/app/service/main-course.service';
 
 @Component({
   selector: 'app-main-course',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainCourseComponent implements OnInit {
 
-  constructor() { }
+  mainCourse$: Observable<MainCourse[]> = this.mainCourseService.getAll();
+
+  constructor(
+    private mainCourseService: MainCourseService
+  ) { }
 
   ngOnInit(): void {
   }
 
+  delete(mainCourse: MainCourse) {
+    this.mainCourseService.delete(mainCourse).subscribe(()=> {
+      this.mainCourse$ = this.mainCourseService.getAll();
+    })
+  }
 }
