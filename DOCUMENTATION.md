@@ -28,7 +28,7 @@ git clone https://github.com/Sedina02/vizsgaremek
 - A terminálban ki kell adni az `ng build` parancsot   
 - A /frontend/dist/frontend mappa tartalmát be kell másolni a /backend/public mappába   
 - A terminálon be kell lépni a /backend mappába és futtatni az `npm start` parancsot 
-- 
+
 A /frontend/environments mappában be kell állítani az API-végpont elérési útvonalát: (ha szükséges)
   - _environment.ts_ állomány: http://localhost:3000/
   - _environment.prod.ts_ állomány: http://localhost:3000/ 
