@@ -11,7 +11,6 @@ router.post('/', (req, res, next) => {
 
 // read
 router.get('/', (req, res, next) => {
-  logger.info('asd');
   return controller.findAll(req, res, next);
 });
 

@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-center py-4">
+  <button type="button" class="btn btn-primary col-10" [routerLink]="['/edit/ingredient', 0]">
+    Új hozzávaló hozzáadása
+  </button>
+</div>
+<div class="container p-3">
+  <h1 class="pb-4">Hozzávalók</h1>
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Hozzávaló neve</th>
+                <th>Allergénje</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ingredient of ingredient$ | async">
+                <td>{{ ingredient.name }}</td>
+                <td>{{ ingredient.allergenId }}</td>
+                <td>
+                  <div class="btn-group">
+                    <button [routerLink]="['/', 'ingredient', 'edit', ingredient._id]" class="btn btn-info">
+                      <i class="fas fa-pencil-alt"></i>
+                    </button>
+                    <button (click)="delete(ingredient)" class="btn btn-danger">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

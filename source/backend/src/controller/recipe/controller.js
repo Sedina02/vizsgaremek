@@ -22,10 +22,7 @@ exports.create = (req, res, next) => {
 };
 
 exports.findAll = (req, res, next) => {
-    console.log("ffff");
     return recipeService.findAll()
-    .populate('typeId')
-    .populate('ingredients')
         .then( recipes => {
             res.json(recipes);
         });

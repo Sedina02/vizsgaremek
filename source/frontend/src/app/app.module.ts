@@ -20,6 +20,7 @@ import { AddEditIngredientComponent } from './page/add-edit-ingredient/add-edit-
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { IngredientComponent } from './page/ingredient/ingredient.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     AddEditDessertComponent,
     AddEditMainCourseComponent,
     AddEditSoupComponent,
-    AddEditIngredientComponent
+    AddEditIngredientComponent,
+    IngredientComponent,
   ],
   imports: [
     BrowserModule,

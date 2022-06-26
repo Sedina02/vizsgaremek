@@ -1,5 +1,6 @@
-<div class="row">
-  <div class="col-md-8">
+<div class="d-flex justify-content-center">
+  <div class="row">
+    <div class="col-md-12 py-5">
     <div class="card">
       <div class="card-header card-header-primary">
         <h4 class="card-title" *ngIf="mainCourse$ | async">Főétel szerkesztése</h4>
@@ -53,7 +54,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label class="bmd-label-floating h5 text-secondary">Elkészítési idő *</label>
-                <input type="text" class="form-control" name="time" [(ngModel)]="mainCourse.description" required
+                <input type="text" class="form-control" name="time" [(ngModel)]="mainCourse.time" required
                   pattern="^[a-űA-Ű ]{5,30}$">
               </div>
               <div [hidden]="mainCourseForm.controls['time']?.valid" class="alert alert-danger" role="alert">
@@ -70,8 +71,5 @@
         </form>
       </div>
     </div>
-  </div>
-  <div class="col-md-4">
-
   </div>
 </div>
