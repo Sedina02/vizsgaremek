@@ -30,14 +30,11 @@ app.use(morgan('combined', { stream: logger.stream }));
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
 //Recipes
 app.use('/appetizer', require('./controller/recipe/router'));
 app.use('/soup', require('./controller/recipe/router'));
 app.use('/main-course', require('./controller/recipe/router'));
-app.get('/dessert', require('./controller/recipe/router'));
+app.use('/dessert', require('./controller/recipe/router'));
 
 app.use((err, req, res, next) => {
     res.status = 500;
