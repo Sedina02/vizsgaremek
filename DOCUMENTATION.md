@@ -51,4 +51,4 @@ Swagger
 ​
 ## **Linkek:**  
 ​
-- Felhasználói történetek ( User Story ) - https://github.com/Sedina02/vizsgaremek/blob/main/README.md
+- Felhasználói történetek ( User Story ) - https://github.com/Sedina02/vizsgaremek/blob/main/documents/user_stories.md
