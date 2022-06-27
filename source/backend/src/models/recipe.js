@@ -24,6 +24,8 @@ const RecipeSchema = mongoose.Schema({
         ref: 'Ingredient',
         amount: Number,
     }]
+},{
+    collection: 'Recipe'
 });
 
 module.exports = mongoose.model('Recipe', RecipeSchema);

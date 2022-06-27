@@ -5,7 +5,7 @@ exports.create = userData => {
     return user.save();
 };
 
-exports.findAll = () => User.find().populate(['email lastName firstName password']);
+exports.findAll = () => User.find();
 
 exports.findOne = id => User.findById(id).populate();
 

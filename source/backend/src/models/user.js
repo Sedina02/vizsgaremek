@@ -16,6 +16,8 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+},{
+    collection: 'User'
 });
 
 UserSchema.pre('save', (next) => {

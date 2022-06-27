@@ -5,6 +5,8 @@ const RecipeTypeSchema = mongoose.Schema({
         type: String,
         required: true,
     }
+}, {
+    collection: 'RecipeType'
 });
 
 module.exports = mongoose.model('RecipeType', RecipeTypeSchema);

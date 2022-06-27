@@ -9,6 +9,8 @@ const IngredientSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Allergen'
     },
+},{
+    collection: 'Ingredient'
 });
 
 module.exports = mongoose.model('Ingredient', IngredientSchema);

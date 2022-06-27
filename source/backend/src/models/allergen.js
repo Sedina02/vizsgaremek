@@ -5,6 +5,8 @@ const AllergenSchema = mongoose.Schema({
         type: String,
         required: true,
     }
+},{
+    collection: 'Allergen'
 });
 
 module.exports = mongoose.model('Allergen', AllergenSchema);
