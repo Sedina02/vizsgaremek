@@ -21,14 +21,15 @@ export class AppetizerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  edit(appetizer: Appetizer): void {
-    this.router.navigate(['/', 'appetizer', 'edit', appetizer._id]);
+  edit(appetizer: Appetizer){
+    this.router.navigate(['/', 'AddEditAppetizer/'+ appetizer._id]);
   }
 
   delete(appetizer: Appetizer) {
-    this.appetizerService.delete(appetizer).subscribe(()=> {
-      this.appetizer$ = this.appetizerService.getAll();
-    })
+    this.appetizerService.delete(appetizer).subscribe({
+      next: () => (this.appetizer$ = this.appetizerService.getAll()),
+      error: (err) => console.error(err),
+    });
   }
 
 }
