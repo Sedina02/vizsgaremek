@@ -47,7 +47,7 @@ const routes: Routes = [
   },
   {
     path: 'edit/dessert/:id',
-    component: AddEditAppetizerComponent,
+    component: AddEditDessertComponent,
   },
   {
     path: 'new/dessert',

@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center py-4">
-  <button type="button" class="btn btn-primary col-10" [routerLink]="['/edit/main-course', 0]">
+  <button type="button" class="btn btn-primary col-10" [routerLink]="['/new/main-course']">
     Új főétel hozzáadása
   </button>
 </div>
@@ -27,7 +27,7 @@
                 <td>{{ mainCourse.time }}</td>
                 <td>
                   <div class="btn-group">
-                    <button [routerLink]="['/', 'mainCourse', 'edit', mainCourse._id]" class="btn btn-info">
+                    <button [routerLink]="['/edit/main-course/', mainCourse._id ]" class="btn btn-info">
                       <i class="fas fa-pencil-alt"></i>
                     </button>
                     <button (click)="delete(mainCourse)" class="btn btn-danger">

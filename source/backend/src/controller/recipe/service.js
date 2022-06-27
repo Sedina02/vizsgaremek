@@ -5,7 +5,7 @@ exports.create = recipeData => {
     return recipe.save();
 };
 
-exports.findAll = () => Recipe.find();
+exports.findAll = (type) => Recipe.find({"typeId": type});
 
 exports.findOne = id => Recipe.findById(id);
 

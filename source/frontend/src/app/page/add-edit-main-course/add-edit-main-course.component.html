@@ -16,7 +16,7 @@
               <div class="form-group">
                 <label class="bmd-label-floating h5 text-secondary">Étel neve: *</label>
                 <input type="text" class="form-control" name="name" [(ngModel)]="mainCourse.name" required
-                  pattern="^[a-űA-Ű]{5,20}$">
+                  pattern="^[a-űA-Ű -]{5,50}$">
               </div>
               <div [hidden]="mainCourseForm.controls['name']?.valid" class="alert alert-danger" role="alert">
                 Az étel nevének legalább 5 karakter hozzúságúnak kell lennie!
@@ -29,10 +29,10 @@
               <div class="form-group">
                 <label class="bmd-label-floating h5 text-secondary">Hozzávalók *</label>
                 <input type="text" class="form-control" name="ingredient" [(ngModel)]="mainCourse.ingredients" required
-                  pattern="^[a-űA-Ű ]{5,30}$">
+                  pattern="^[a-űA-Ű, ]{5,200}$">
               </div>
               <div [hidden]="mainCourseForm.controls['ingredient']?.valid" class="alert alert-danger" role="alert">
-                The description must be at least 5 letters!
+                Legalább 3 hozzávalót meg kell adni!
               </div>
             </div>
           </div>
@@ -42,7 +42,7 @@
               <div class="form-group">
                 <label class="bmd-label-floating h5 text-secondary">Elkészítés *</label>
                 <input type="text" class="form-control" name="description" [(ngModel)]="mainCourse.description" required
-                  pattern="^[a-űA-Ű ]{5,30}$">
+                  pattern="^[a-űA-Ű0-9!@#$%^&*()_+\-=\\{};':\\|,.>\/? ]{20,20000}$">
               </div>
               <div [hidden]="mainCourseForm.controls['description']?.valid" class="alert alert-danger" role="alert">
                 Az étel elkészítésének leírásának legalább 5 karakter hozzúságúnak kell lennie!
@@ -55,7 +55,7 @@
               <div class="form-group">
                 <label class="bmd-label-floating h5 text-secondary">Elkészítési idő *</label>
                 <input type="text" class="form-control" name="time" [(ngModel)]="mainCourse.time" required
-                  pattern="^[a-űA-Ű ]{5,30}$">
+                  pattern="^[a-űA-Ű0-9 ]{5,30}$">
               </div>
               <div [hidden]="mainCourseForm.controls['time']?.valid" class="alert alert-danger" role="alert">
                 Az elkészítési időnek tartalmaznia kell az időt és a hozzá tartozó időmértékegységet is!
@@ -63,9 +63,9 @@
             </div>
           </div>
 
-          <button  (click)="update(mainCourse)" [disabled]="mainCourseForm.invalid" type="submit"
+          <button *ngIf="(mainCourse$ | async)" (click)="update(mainCourse)" [disabled]="mainCourseForm.invalid" type="submit"
             class="btn btn-primary pull-right">Főétel szerkesztésének mentése</button>
-          <button (click)="create(mainCourse)" [disabled]="mainCourseForm.invalid" type="submit"
+          <button *ngIf="!(mainCourse$ | async)" (click)="create(mainCourse)" [disabled]="mainCourseForm.invalid" type="submit"
             class="btn btn-primary pull-right">Főétel mentése</button>
           <div class="clearfix"></div>
         </form>

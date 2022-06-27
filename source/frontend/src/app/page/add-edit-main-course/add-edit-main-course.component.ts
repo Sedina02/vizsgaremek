@@ -25,24 +25,33 @@ export class AddEditMainCourseComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.ar.params.subscribe({
-      next: (param) =>
-        (this.mainCourse$ = this.mainCourseService.getOne(param['id'])),
-    });
-    this.mainCourse$.subscribe({
-      next: (mainCourse) => (this.mainCourse = mainCourse ? mainCourse : this.mainCourse),
-    });
+    if(this.router.url.split('/')[1] === 'edit') {
+      this.ar.params.subscribe({
+           next: (param) =>
+             (this.mainCourse$ = this.mainCourseService.getOneRecipe(param['id'])),
+         });
+         this.mainCourse$.subscribe({
+           next: (mainCourse) => (this.mainCourse = mainCourse ? mainCourse : this.mainCourse),
+         });
+    }
   }
 
   update(mainCourse: MainCourse) {
-    this.mainCourseService.update(mainCourse).subscribe(
+    this.mainCourseService.updateRecipe(mainCourse).subscribe(
       (mainCourse) => this.router.navigate(['/', 'main-course']),
       err => console.error(err),
     );
   }
 
   create(mainCourse: MainCourse): void {
-    this.mainCourseService.create(mainCourse).subscribe(
+    const newMainCourse = {
+      ingredients: mainCourse.ingredients,
+      name: mainCourse.name,
+      typeId: "main-course",
+      description: mainCourse.description,
+      time: mainCourse.time
+    }
+    this.mainCourseService.createRecipe(newMainCourse).subscribe(
       (mainCourse) => this.router.navigate(['/', 'main-course']),
       err => console.error(err)
     );

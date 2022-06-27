@@ -10,11 +10,11 @@ router.post('/', (req, res, next) => {
 });
 
 // read
-router.get('/', (req, res, next) => {
+router.get('/:typeId', (req, res, next) => {
   return controller.findAll(req, res, next);
 });
 
-router.get('/:id', (req, res, next) => {
+router.get('/find-one/:id', (req, res, next) => {
   return controller.findOne(req, res, next);
 });
 

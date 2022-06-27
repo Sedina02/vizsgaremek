@@ -25,24 +25,33 @@ export class AddEditSoupComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.ar.params.subscribe({
-      next: (param) =>
-        (this.soup$ = this.soupService.getOne(param['id'])),
-    });
-    this.soup$.subscribe({
-      next: (soup) => (this.soup = soup ? soup : this.soup),
-    });
+    if(this.router.url.split('/')[1] === 'edit') {
+      this.ar.params.subscribe({
+           next: (param) =>
+             (this.soup$ = this.soupService.getOneRecipe(param['id'])),
+         });
+         this.soup$.subscribe({
+           next: (soup) => (this.soup = soup ? soup : this.soup),
+         });
+    }
   }
 
   update(soup: Soup) {
-    this.soupService.update(soup).subscribe(
+    this.soupService.updateRecipe(soup).subscribe(
       (soup) => this.router.navigate(['/', 'soup']),
       err => console.error(err),
     );
   }
 
   create(soup: Soup): void {
-    this.soupService.create(soup).subscribe(
+    const newSoup = {
+      ingredients: soup.ingredients,
+      name: soup.name,
+      typeId: "soup",
+      description: soup.description,
+      time: soup.time
+    }
+    this.soupService.createRecipe(newSoup).subscribe(
       (soup) => this.router.navigate(['/', 'soup']),
       err => console.error(err)
     );

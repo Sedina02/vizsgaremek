@@ -25,24 +25,33 @@ export class AddEditAppetizerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.ar.params.subscribe({
-      next: (param) =>
-        (this.appetizer$ = this.appetizerService.getOne(param['id'])),
-    });
-    this.appetizer$.subscribe({
-      next: (appetizer) => (this.appetizer = appetizer ? appetizer : this.appetizer),
-    });
+    if(this.router.url.split('/')[1] === 'edit') {
+      this.ar.params.subscribe({
+           next: (param) =>
+             (this.appetizer$ = this.appetizerService.getOneRecipe(param['id'])),
+         });
+         this.appetizer$.subscribe({
+           next: (appetizer) => (this.appetizer = appetizer ? appetizer : this.appetizer),
+         });
+    }
   }
 
   update(appetizer: Appetizer) {
-    this.appetizerService.update(appetizer).subscribe(
+    this.appetizerService.updateRecipe(appetizer).subscribe(
       (appetizer) => this.router.navigate(['/', 'appetizer']),
       err => console.error(err),
     );
   }
 
   create(appetizer: Appetizer): void {
-    this.appetizerService.create(appetizer).subscribe(
+    const newAppetizer = {
+      ingredients: appetizer.ingredients,
+      name: appetizer.name,
+      typeId: "appetizer",
+      description: appetizer.description,
+      time: appetizer.time
+    }
+    this.appetizerService.createRecipe(newAppetizer).subscribe(
       (appetizer) => this.router.navigate(['/', 'appetizer']),
       err => console.error(err)
     );

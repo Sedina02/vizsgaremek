@@ -10,7 +10,7 @@ import { MainCourseService } from 'src/app/service/main-course.service';
 })
 export class MainCourseComponent implements OnInit {
 
-  mainCourse$: Observable<MainCourse[]> = this.mainCourseService.getAll();
+  mainCourse$: Observable<MainCourse[]> = this.mainCourseService.findByType();
 
   constructor(
     private mainCourseService: MainCourseService
@@ -20,8 +20,8 @@ export class MainCourseComponent implements OnInit {
   }
 
   delete(mainCourse: MainCourse) {
-    this.mainCourseService.delete(mainCourse).subscribe(()=> {
-      this.mainCourse$ = this.mainCourseService.getAll();
+    this.mainCourseService.deleteRecipe(mainCourse).subscribe(()=> {
+      this.mainCourse$ = this.mainCourseService.findByType();
     })
   }
 }

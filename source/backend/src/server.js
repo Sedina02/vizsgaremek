@@ -33,11 +33,16 @@ app.use(morgan('combined', { stream: logger.stream }));
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
+const authenticateJwt = require('./models/auth/authenticate');
+
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
-//Recipes
-app.use('/appetizer', require('./controller/recipe/router'));
-app.use('/ingredient', require('./controller/ingredient/router'));
+// app.use('/recipe', authenticateJwt, require('./controller/recipe/router'));
+app.use('/recipe', require('./controller/recipe/router'));
+app.use('/ingredient',  require('./controller/ingredient/router'));
+app.use('/login', require('./controller/login/router'));
+
+
 // app.use('/soup', require('./controller/recipe/router'));
 // app.use('/main-course', require('./controller/recipe/router'));
 // app.use('/dessert', require('./controller/recipe/router'));

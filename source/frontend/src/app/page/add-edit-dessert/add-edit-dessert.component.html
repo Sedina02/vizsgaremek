@@ -16,7 +16,7 @@
               <div class="form-group">
                 <label class="bmd-label-floating h5 text-secondary">Étel neve: *</label>
                 <input type="text" class="form-control" name="name" [(ngModel)]="dessert.name" required
-                  pattern="^[a-űA-Ű]{5,20}$">
+                  pattern="^[a-űA-Ű ]{5,50}$">
               </div>
               <div [hidden]="dessertForm.controls['name']?.valid" class="alert alert-danger" role="alert">
                 Az étel nevének legalább 5 karakter hozzúságúnak kell lennie!
@@ -29,10 +29,10 @@
               <div class="form-group">
                 <label class="bmd-label-floating h5 text-secondary">Hozzávalók *</label>
                 <input type="text" class="form-control" name="ingredient" [(ngModel)]="dessert.ingredients" required
-                  pattern="^[a-űA-Ű ]{5,30}$">
+                  pattern="^[a-űA-Ű, ]{5,200}$">
               </div>
               <div [hidden]="dessertForm.controls['ingredient']?.valid" class="alert alert-danger" role="alert">
-                The description must be at least 5 letters!
+                Legalább 3 hozzávalót meg kell adni!
               </div>
             </div>
           </div>
@@ -42,7 +42,7 @@
               <div class="form-group">
                 <label class="bmd-label-floating h5 text-secondary">Elkészítés *</label>
                 <input type="text" class="form-control" name="description" [(ngModel)]="dessert.description" required
-                  pattern="^[a-űA-Ű ]{5,30}$">
+                  pattern="^[a-űA-Ű0-9!@#$%^&*()_+\-=\\{};':\\|,.>\/? ]{20,20000}$">
               </div>
               <div [hidden]="dessertForm.controls['description']?.valid" class="alert alert-danger" role="alert">
                 Az étel elkészítésének leírásának legalább 5 karakter hozzúságúnak kell lennie!
@@ -55,7 +55,7 @@
               <div class="form-group">
                 <label class="bmd-label-floating h5 text-secondary">Elkészítési idő *</label>
                 <input type="text" class="form-control" name="time" [(ngModel)]="dessert.time" required
-                  pattern="^[a-űA-Ű ]{5,30}$">
+                  pattern="^[a-űA-Ű0-9 ]{5,30}$">
               </div>
               <div [hidden]="dessertForm.controls['time']?.valid" class="alert alert-danger" role="alert">
                 Az elkészítési időnek tartalmaznia kell az időt és a hozzá tartozó időmértékegységet is!
@@ -63,9 +63,9 @@
             </div>
           </div>
 
-          <button (click)="update(dessert)" [disabled]="dessertForm.invalid" type="submit"
+          <button *ngIf="dessert$ | async" (click)="update(dessert)" [disabled]="dessertForm.invalid" type="submit"
             class="btn btn-primary pull-right">Desszert, sütemény szerkesztésének mentése</button>
-          <button (click)="create(dessert)" [disabled]="dessertForm.invalid" type="submit"
+          <button *ngIf="!(dessert$ | async)" (click)="create(dessert)" [disabled]="dessertForm.invalid" type="submit"
             class="btn btn-primary pull-right">Desszert, sütemény mentése</button>
           <div class="clearfix"></div>
         </form>

@@ -10,7 +10,7 @@ import { DessertService } from 'src/app/service/dessert.service';
 })
 export class DessertComponent implements OnInit {
 
-  dessert$: Observable<Dessert[]> = this.dessertService.getAll();
+  dessert$: Observable<Dessert[]> = this.dessertService.findByType();
 
   constructor(
     private dessertService: DessertService
@@ -20,8 +20,8 @@ export class DessertComponent implements OnInit {
   }
 
   delete(dessert: Dessert) {
-    this.dessertService.delete(dessert).subscribe(()=> {
-      this.dessert$ = this.dessertService.getAll();
+    this.dessertService.deleteRecipe(dessert).subscribe(()=> {
+      this.dessert$ = this.dessertService.findByType();
     })
   }
 }

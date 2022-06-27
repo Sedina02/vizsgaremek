@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { IngredientComponent } from './page/ingredient/ingredient.component';
+import { LoginComponent } from './page/login/login.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { IngredientComponent } from './page/ingredient/ingredient.component';
     AddEditSoupComponent,
     AddEditIngredientComponent,
     IngredientComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

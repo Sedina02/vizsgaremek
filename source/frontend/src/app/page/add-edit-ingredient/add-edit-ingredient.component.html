@@ -36,9 +36,9 @@
             </div>
           </div>
 
-          <button (click)="update(ingredient)" [disabled]="ingredientForm.invalid" type="submit"
+          <button *ngIf="ingredient$ | async" (click)="update(ingredient)" [disabled]="ingredientForm.invalid" type="submit"
             class="btn btn-primary pull-right">Hozzávaló szerkesztésének mentése</button>
-          <button (click)="create(ingredient)" [disabled]="ingredientForm.invalid" type="submit"
+          <button *ngIf="!(ingredient$ | async)" (click)="create(ingredient)" [disabled]="ingredientForm.invalid" type="submit"
             class="btn btn-primary pull-right">Hozzávaló mentése</button>
           <div class="clearfix"></div>
         </form>

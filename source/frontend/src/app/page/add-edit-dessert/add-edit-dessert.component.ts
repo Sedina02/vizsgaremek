@@ -25,24 +25,33 @@ export class AddEditDessertComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.ar.params.subscribe({
-      next: (param) =>
-        (this.dessert$ = this.dessertService.getOne(param['id'])),
-    });
-    this.dessert$.subscribe({
-      next: (dessert) => (this.dessert = dessert ? dessert : this.dessert),
-    });
+    if(this.router.url.split('/')[1] === 'edit') {
+      this.ar.params.subscribe({
+           next: (param) =>
+             (this.dessert$ = this.dessertService.getOneRecipe(param['id'])),
+         });
+         this.dessert$.subscribe({
+           next: (dessert) => (this.dessert = dessert ? dessert : this.dessert),
+         });
+    }
   }
 
   update(dessert: Dessert) {
-    this.dessertService.update(dessert).subscribe(
+    this.dessertService.updateRecipe(dessert).subscribe(
       (dessert) => this.router.navigate(['/', 'dessert']),
       err => console.error(err),
     );
   }
 
   create(dessert: Dessert): void {
-    this.dessertService.create(dessert).subscribe(
+    const newDessert = {
+      ingredients: dessert.ingredients,
+      name: dessert.name,
+      typeId: "dessert",
+      description: dessert.description,
+      time: dessert.time
+    }
+    this.dessertService.createRecipe(newDessert).subscribe(
       (dessert) => this.router.navigate(['/', 'dessert']),
       err => console.error(err)
     );

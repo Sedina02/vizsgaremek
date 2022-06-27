@@ -11,7 +11,7 @@ import { AppetizerService } from 'src/app/service/appetizer.service';
 })
 export class AppetizerComponent implements OnInit {
 
-  appetizer$: Observable<Appetizer[]> = this.appetizerService.getAll();
+  appetizer$: Observable<Appetizer[]> = this.appetizerService.findByType();
 
   constructor(
     private appetizerService: AppetizerService,
@@ -26,8 +26,8 @@ export class AppetizerComponent implements OnInit {
   }
 
   delete(appetizer: Appetizer) {
-    this.appetizerService.delete(appetizer).subscribe({
-      next: () => (this.appetizer$ = this.appetizerService.getAll()),
+    this.appetizerService.deleteRecipe(appetizer).subscribe({
+      next: () => (this.appetizer$ = this.appetizerService.findByType()),
       error: (err) => console.error(err),
     });
   }

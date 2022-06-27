@@ -25,25 +25,31 @@ export class AddEditIngredientComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.ar.params.subscribe({
-      next: (param) =>
-        (this.ingredient$ = this.ingredientService.getOne(param['id'])),
-    });
-    this.ingredient$.subscribe({
-      next: (ingredient) => (this.ingredient = ingredient ? ingredient : this.ingredient),
-    });
+    if(this.router.url.split('/')[1] === 'edit') {
+      this.ar.params.subscribe({
+           next: (param) =>
+             (this.ingredient$ = this.ingredientService.getOneRecipe(param['id'])),
+         });
+         this.ingredient$.subscribe({
+           next: (ingredient) => (this.ingredient = ingredient ? ingredient : this.ingredient),
+         });
+    }
   }
 
   update(ingredient: Ingredient) {
-    this.ingredientService.update(ingredient).subscribe(
-      (ingredient) => this.router.navigate(['/', 'ingredients']),
-      err => console.error(err),
-    );
+    this.ingredientService.update(ingredient).subscribe({
+      next: () =>
+        (this.router.navigate(['/', 'ingredient'])),
+      })
   }
 
   create(ingredient: Ingredient): void {
-    this.ingredientService.create(ingredient).subscribe(
-      (ingredient) => this.router.navigate(['/', 'ingredients']),
+    const newIngredient = {
+      allergenId: ingredient.allergenId,
+      name: ingredient.name,
+    }
+    this.ingredientService.create(newIngredient).subscribe(
+      (ingredient) => this.router.navigate(['/', 'ingredient']),
       err => console.error(err)
     );
   }

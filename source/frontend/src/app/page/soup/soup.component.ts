@@ -10,7 +10,7 @@ import { SoupService } from 'src/app/service/soup.service';
 })
 export class SoupComponent implements OnInit {
 
-  soup$: Observable<Soup[]> = this.soupService.getAll();
+  soup$: Observable<Soup[]> = this.soupService.findByType();
 
   constructor(
     private soupService: SoupService
@@ -20,8 +20,8 @@ export class SoupComponent implements OnInit {
   }
 
   delete(soup: Soup) {
-    this.soupService.delete(soup).subscribe(()=> {
-      this.soup$ = this.soupService.getAll();
+    this.soupService.deleteRecipe(soup).subscribe(()=> {
+      this.soup$ = this.soupService.findByType();
     })
   }
 

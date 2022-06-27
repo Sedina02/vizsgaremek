@@ -10,8 +10,10 @@ const UserSchema = mongoose.Schema({
             unique: true,
         }
     },
-    lastName: String,
-    firstName: String,
+    name: {
+        type: String,
+        required: true,
+    }, 
     password: {
         type: String,
         required: true,
@@ -20,8 +22,8 @@ const UserSchema = mongoose.Schema({
     collection: 'User'
 });
 
-UserSchema.pre('save', (next) => {
-    if (!document.isModified('password')){
+UserSchema.pre('save', (doc, next) => {
+    if (!doc.isModified('password')){
         return next();
     }
 
@@ -48,5 +50,7 @@ UserSchema.methods.comparePassword = (candidatePassword, cb) => {
         }
 
         cb(null, isMatch);
-    })
+    });
 };
+
+module.exports = mongoose.model('User', UserSchema);
