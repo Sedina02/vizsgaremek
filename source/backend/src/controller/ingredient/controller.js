@@ -23,7 +23,6 @@ exports.create = (req, res, next) => {
 
 exports.findAll = (req, res, next) => {
     return ingredientService.findAll()
-        .populate('allergenId')
         .then( ingredients => {
             res.json(ingredients);
         });
@@ -31,7 +30,6 @@ exports.findAll = (req, res, next) => {
 
 exports.findOne = (req, res, next) => {
     return ingredientService.findOne(req.params.id)
-        .populate('allergenId')
         .then( ingredient => {
             if (!ingredient) {
                 return next(new createError.NotFound("A hozzávaló nem található!"));

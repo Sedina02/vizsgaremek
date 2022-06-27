@@ -27,7 +27,7 @@
                 <td>{{ appetizer.time }}</td>
                 <td>
                   <div class="btn-group">
-                    <button [routerLink]="['/', 'appetizer', 'edit', appetizer._id]" class="btn btn-info">
+                    <button (click)="edit(appetizer)" class="btn btn-info">
                       <i class="fas fa-pencil-alt"></i>
                     </button>
                     <button (click)="delete(appetizer)" class="btn btn-danger">

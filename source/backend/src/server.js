@@ -5,10 +5,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const swaggerUI = require('swagger-ui-express');
+const YAML = require('yamljs');
 const cors = require('cors');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 //HKNfxmQumgXhZQ
+
+const swaggerDocument = YAML.load('./docs/swagger.yaml');
 
 const { host } = config.get('database');
 mongoose
@@ -29,6 +32,8 @@ app.use(cors());
 app.use(morgan('combined', { stream: logger.stream }));
 app.use(express.static('public'));
 app.use(bodyParser.json());
+
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 //Recipes
 app.use('/appetizer', require('./controller/recipe/router'));

@@ -6,8 +6,7 @@ const IngredientSchema = mongoose.Schema({
         required: true,
     },
     allergenId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Allergen'
+        type: String
     },
 },{
     collection: 'Ingredient'

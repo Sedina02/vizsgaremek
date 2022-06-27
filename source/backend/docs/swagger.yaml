@@ -1,0 +1,84 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Ohana Foods Dokumentáció
+  description: Az Ohana Foods végpontjainak részletes leírása és használata
+servers:
+  - url: http://localhost:3000
+paths:
+  /appetizer:
+    get:
+      description: Returns a list of recipes
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipe'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /ingredient:
+    get:
+      description: Returns a list of ingredients
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ingredient'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Recipe:
+      type: object
+      required:
+        - typeId
+        - name
+        - description
+        - time
+        - ingredients
+      properties:
+        typeId: 
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        time:
+          type: string
+        ingredients:
+          type: string
+    Ingredient: 
+      type: object
+      required: 
+        - name
+      properties:
+        name: 
+          type: string
+        allergenId:
+          type: string
+    Error:
+      type: object
+      required:
+        - message
+        - has_error
+      properties:
+        message:
+          type: string
+        has_error:
+          type: boolean

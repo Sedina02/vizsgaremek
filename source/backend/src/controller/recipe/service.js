@@ -5,9 +5,9 @@ exports.create = recipeData => {
     return recipe.save();
 };
 
-exports.findAll = () => Recipe.find().populate(['typeId ingredients']);
+exports.findAll = () => Recipe.find();
 
-exports.findOne = id => Recipe.findById(id).populate(['typeId ingredients']);
+exports.findOne = id => Recipe.findById(id);
 
 exports.update = (id, updateData) => Recipe.findByIdAndUpdate(id, updateData, {new: true});
 
