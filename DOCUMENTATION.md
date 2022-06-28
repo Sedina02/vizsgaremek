@@ -35,10 +35,9 @@ A /frontend/environments mappában be kell állítani az API-végpont elérési 
 ​
 ## **4. Az alkalmazás indítása**
 ​
-A megadott Docker container indítása és inicializálása:
-- El kell indítani a Docker Desktop alkalmazást
-- A /backend mappába belépve a terminálban ki kell adni az `npm run dev` parancsot  
-- Ha szükséges, a /frontend mappába belépve a terminálban az `npm start` paranccsal indítható a frontend
+Az alkalmazás indítása:
+- A /backend mappába belépve a terminálban ki kell adni az `npm start` parancsot, ezzel futtatható a backend.
+- A /frontend mappába belépve a terminálban az kell adni az `npm start` parancsot, ezzel futtatható a frontend.
 
 A belépéshez egy érvényes e-mail-cím és jelszó páros (példa):  
 ​
