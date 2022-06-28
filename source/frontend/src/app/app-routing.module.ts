@@ -77,6 +77,9 @@ const routes: Routes = [
   {
     path: 'edit/ingredient/:id',
     component: AddEditIngredientComponent,
+    data: {
+      edit: true,
+    },
   },
   {
     path: 'new/ingredient',

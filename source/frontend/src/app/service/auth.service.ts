@@ -45,7 +45,7 @@ export class AuthService {
     this.user$.subscribe({
       next: user => {
         if (user) {
-          this.router.navigate(['/']);
+          this.router.navigate(['/ingredient']);
         } else {
           this.router.navigate(['/', 'login']);
           this.access_token$.next('');

@@ -12,17 +12,16 @@ router.post('/', async (req, res, next) => {
         return res.sendStatus(404);
     }
 
-    user.password = 'test456';
+    user.password = 'testadmin';
     await user.save();
 
     const valid = user.verifyPasswordSync(password);
-    
     if (valid) {
         const accessToken = jwt.sign({
             _id: user._id,
             email: user.email,
             role: 1,
-        }, 'secret', {
+        }, process.env.ACCESS_TOKEN_SECRET, {
             expiresIn: '1h',
         });
 

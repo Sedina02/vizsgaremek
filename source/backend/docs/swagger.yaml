@@ -8,7 +8,7 @@ servers:
 paths:
   /appetizer:
     get:
-      description: Returns a list of recipes
+      description: Returns a list of appetizer recipes
       responses:
         '200':
           description: Success
@@ -25,7 +25,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      description: Creates a new recipe
+      description: Creates a new appetizer recipe
       requestBody:
         required: true
         content:
@@ -34,7 +34,7 @@ paths:
               $ref: '#/components/schemas/Recipe'
       responses:
         '201':
-          description: Recipe has been created successfully
+          description: Appetizer recipe has been created successfully
           content:
             application/json:
               schema:
@@ -51,9 +51,438 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /edit/appetizer/{_id}:
+    get:
+      description: Get an appetizer
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          example: "62b9115ba96eee70e622c635"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns an appetizer recipe
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#/components/schemas/Recipe"
+        "404":
+          description: Requested appetizer recipe doesn't exist
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch:
+      description: Updates an appetizer recipe
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Recipe"
+      responses:
+        "200":
+          description: Success appetizer recipe update
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      description: Delete an appetizer recipe
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success appetizer recipe delete
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {}
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /soup:
+    get:
+      description: Returns a list of soup recipes
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipe'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      description: Creates a new soup recipe
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+      responses:
+        '201':
+          description: Soup recipe has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+        '400':
+          description: Invalid request when the post data is invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /edit/soup/{_id}:
+    get:
+      description: Get a soup recipe
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          example: "62b9115ba96eee70e622c635"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns a soup recipe
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#/components/schemas/Recipe"
+        "404":
+          description: Requested soup recipe doesn't exist
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch:
+      description: Updates a soup recipe
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Recipe"
+      responses:
+        "200":
+          description: Success soup recipe update
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Recipe"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      description: Delete a soup recipe
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success soup recipe delete
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {}
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /main-course:
+    get:
+      description: Returns a list of main course recipes
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipe'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      description: Creates a new main course recipe
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+      responses:
+        '201':
+          description: Main course has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+        '400':
+          description: Invalid request when the post data is invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /edit/main-course/{_id}:
+    get:
+      description: Get a main course recipe
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          example: "62b9115ba96eee70e622c635"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns a main course recipe
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#/components/schemas/Recipe"
+        "404":
+          description: Requested main course recipe doesn't exist
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch:
+      description: Updates a main course recipe
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Recipe"
+      responses:
+        "200":
+          description: Success main course recipe update
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Recipe"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      description: Delete a main course recipe
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success main course recipe delete
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {}
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /dessert:
+    get:
+      description: Returns a list of dessert recipes
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipe'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      description: Creates a dessert recipe
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+      responses:
+        '201':
+          description: Dessert has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+        '400':
+          description: Invalid request when the post data is invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /edit/dessert/{_id}:
+    get:
+      description: Get a dessert recipe
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          example: "62b9115ba96eee70e622c635"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns a dessert recipe
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#/components/schemas/Recipe"
+        "404":
+          description: Requested dessert recipe doesn't exist
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch:
+      description: Updates a dessert recipe
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Recipe"
+      responses:
+        "200":
+          description: Success dessert recipe update
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Recipe"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      description: Delete a dessert recipe
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success dessert recipe delete
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {}
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
   /ingredient:
     get:
       description: Returns a list of ingredients
+       security:
+        - bearerAuth: []
       responses:
         '200':
           description: Success
@@ -71,6 +500,8 @@ paths:
                 $ref: '#/components/schemas/Error'
     post:
       description: Creates a new ingredient
+       security:
+        - bearerAuth: []
       requestBody:
         required: true
         content:
@@ -96,6 +527,85 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /edit/ingredient/{_id}:
+    get:
+      description: Get an ingredient
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          example: "62b9115ba96eee70e622c635"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns an ingredient
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#/components/schemas/Ingredient"
+        "404":
+          description: Requested ingredient doesn't exist
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch:
+      description: Updates an ingredient
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Ingredient"
+      responses:
+        "200":
+          description: Success ingredient update
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Ingredient"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      description: Delete an ingredient
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success ingredient delete
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {}
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     Recipe:
@@ -117,6 +627,20 @@ components:
           type: string
         ingredients:
           type: string
+    Allergen:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+    RecipeType:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
     Ingredient: 
       type: object
       required: 
@@ -125,6 +649,15 @@ components:
         name: 
           type: string
         allergenId:
+          type: string
+    User:
+      type: object
+      required: 
+        - email
+      properties:
+        lastName: 
+          type: string
+        firstName:
           type: string
     Error:
       type: object
