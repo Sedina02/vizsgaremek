@@ -38,13 +38,8 @@ const authenticateJwt = require('./models/auth/authenticate');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/recipe', require('./controller/recipe/router'));
-app.use('/ingredient', authenticateJwt, require('./controller/ingredient/router'));
 app.use('/login', require('./controller/login/router'));
-
-
-// app.use('/soup', require('./controller/recipe/router'));
-// app.use('/main-course', require('./controller/recipe/router'));
-// app.use('/dessert', require('./controller/recipe/router'));
+app.use('/ingredient', authenticateJwt, require('./controller/ingredient/router'));
 
 app.use('/', (req, res) => {
     console.log(req.url);
