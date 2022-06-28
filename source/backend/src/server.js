@@ -4,7 +4,7 @@ const logger = require('./config/logger');
 const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const swaggerUI = require('swagger-ui-express');
+const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -35,17 +35,21 @@ app.use(bodyParser.json());
 
 const authenticateJwt = require('./models/auth/authenticate');
 
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-// app.use('/recipe', authenticateJwt, require('./controller/recipe/router'));
 app.use('/recipe', require('./controller/recipe/router'));
-app.use('/ingredient',  require('./controller/ingredient/router'));
+app.use('/ingredient', authenticateJwt, require('./controller/ingredient/router'));
 app.use('/login', require('./controller/login/router'));
 
 
 // app.use('/soup', require('./controller/recipe/router'));
 // app.use('/main-course', require('./controller/recipe/router'));
 // app.use('/dessert', require('./controller/recipe/router'));
+
+app.use('/', (req, res) => {
+    console.log(req.url);
+    res.send('api server');
+});
 
 app.use((err, req, res, next) => {
     res.status = 500;

@@ -9,6 +9,7 @@ import { AppetizerComponent } from './page/appetizer/appetizer.component';
 import { DessertComponent } from './page/dessert/dessert.component';
 import { HomeComponent } from './page/home/home.component';
 import { IngredientComponent } from './page/ingredient/ingredient.component';
+import { LoginComponent } from './page/login/login.component';
 import { MainCourseComponent } from './page/main-course/main-course.component';
 import { SoupComponent } from './page/soup/soup.component';
 
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: 'appetizer',

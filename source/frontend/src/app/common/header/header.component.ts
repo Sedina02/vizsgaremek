@@ -4,6 +4,7 @@ import { faBowlFood } from '@fortawesome/free-solid-svg-icons';
 import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 import { faCake } from '@fortawesome/free-solid-svg-icons';
 import { faBreadSlice} from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/service/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,7 +17,11 @@ export class HeaderComponent implements OnInit {
   faCake = faCake;
   faBreadSlice = faBreadSlice;
 
-  constructor() { }
+  user$ = this.auth.user$;
+
+  constructor(
+    private auth: AuthService,
+  ) { }
 
   ngOnInit(): void {
   }

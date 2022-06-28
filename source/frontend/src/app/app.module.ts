@@ -17,11 +17,13 @@ import { AddEditDessertComponent } from './page/add-edit-dessert/add-edit-desser
 import { AddEditMainCourseComponent } from './page/add-edit-main-course/add-edit-main-course.component';
 import { AddEditSoupComponent } from './page/add-edit-soup/add-edit-soup.component';
 import { AddEditIngredientComponent } from './page/add-edit-ingredient/add-edit-ingredient.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { IngredientComponent } from './page/ingredient/ingredient.component';
 import { LoginComponent } from './page/login/login.component';
+import { JwtInterceptor } from './service/jwt.interceptor';
+import { AuthService } from './service/auth.service';
 
 @NgModule({
   declarations: [
@@ -48,9 +50,19 @@ import { LoginComponent } from './page/login/login.component';
     FontAwesomeModule,
     FormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      deps: [
+        AuthService,
+      ],
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
